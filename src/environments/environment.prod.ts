@@ -1,4 +1,6 @@
+import { env } from 'process';
+
 export const environment = {
   production: true,
-  openWeatherKey: process.env.OPEN_WEATHER_KEY,
+  openWeatherKey: env.OPEN_WEATHER_KEY,
 };
