@@ -26,13 +26,13 @@
 
 ### Процесс работы
 1. При запуске приложения, загружается прогноз погоды для города Москвы. Чтобы загрузить прогноз для другого города, надо ввести название города в текстовое поле "Другой город" и нажать кнопку "Обновить".
-2. Название города вместе с другими параметрами (appid, units и lang) добавляются в параметры двух GET HTTP-запроса к API OpenWeather: для получения текущей погоды и для получения прогноза погоды на 5 дней вперёд с интервалом в 3 часа.
+2. Название города вместе с другими параметрами (appid, units и lang) добавляются в параметры двух GET HTTP-запросов к API OpenWeather: для получения текущей погоды и для получения прогноза погоды на 5 дней вперёд с интервалом в 3 часа.
 3. Когда сервер возвращает ответ с данными, обновляются компоненты Погода, Прогноз погоды и Советы.
 
 ## Разработка
 
 ### Secrets
-Создайте в корне проекта файл secrets.js:
+Создайте в корне проекта файл secrets.js с токеном для API OpenWeather:
 ```bash
 export const Secrets = {
   "OPEN_WEATHER_KEY": "key"
@@ -56,8 +56,10 @@ export const Secrets = {
 Чтобы получить дополнительную информацию об Angular CLI используйте команду `ng help` или прочитайте [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Тесты
-### Запуск юнит тестов
+### Запуск TSLint
+Используйте `ng lint`, чтобы запустить линтер для TypeScript с [TSLint](https://palantir.github.io/tslint/).
 
+### Запуск юнит тестов
 Используйте `ng test`, чтобы запустить юнит тесты с [Karma](https://karma-runner.github.io).
 
 ## Запуск end-to-end тестов
@@ -67,7 +69,7 @@ End-to-end тестами проект не покрыт.
 
 ## CI/CD
 Для CI/CD используются Github Actions:
-- При создании пул реквестов в ветку мастер, запускается воркфлоу [ingrate.yml]().
-- При слияние в ветку мастер, запускается воркфлоу [deploy.yml]().
+- При создании пул реквестов в ветку мастер, запускается воркфлоу [ingrate.yml](https://github.com/bzvyagintsev/smart-weather-forecast/blob/master/.github/workflows/integrate.yml).
+- При слияние в ветку мастер, запускается воркфлоу [deploy.yml](https://github.com/bzvyagintsev/smart-weather-forecast/blob/master/.github/workflows/deploy.yml).
 
 Приложение развернуто на хостинге Firebase: https://smart-weather-forecast.firebaseapp.com/
