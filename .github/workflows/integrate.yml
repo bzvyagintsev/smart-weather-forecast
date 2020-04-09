@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: envsubst < src/assets/env.template.js > src/assets/env.js
+        env:
+          OPEN_WEATHER_KEY: ${{ secrets.OPEN_WEATHER_KEY }}
+      #   Clean instal for CI server
+      - run: npm ci
+      - run: npm run lint
+      # - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm run build:prod
