@@ -15,5 +15,5 @@ jobs:
         #   Clean instal for Ci server
       - run: npm ci
       - run: npm run lint
-      - run: npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
+      # - run: npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run: npm run build --prod
