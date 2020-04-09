@@ -1,4 +1,4 @@
-export class chartData {
+export class ChartData {
   name: string;
   series:
     {

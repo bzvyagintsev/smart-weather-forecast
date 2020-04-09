@@ -38,5 +38,6 @@ export class Weather {
   sys: {
     pod: string;
   };
+  /* tslint:disable-next-line:variable-name */
   dt_txt: string;
 }

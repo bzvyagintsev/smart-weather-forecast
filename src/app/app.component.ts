@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
           this.forecast.list.unshift(weather);
 
           const date = new Date();
-          const dt_txt =
+          const dtTXT =
             date.getFullYear() +
             '-' +
             (date.getMonth() + 1) +
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
             (date.getHours() - 3) +
             ':00:00';
 
-          this.forecast.list[0].dt_txt = dt_txt;
+          this.forecast.list[0].dt_txt = dtTXT;
 
           this.data[0].series = [];
 
