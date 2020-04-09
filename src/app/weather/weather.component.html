@@ -1,0 +1,32 @@
+<div *ngIf="weather">
+  <div class="toolbar">
+    <div class="toolbar__name">
+      <h1 class="toolbar__title">{{weather.name}}</h1>
+      <p class="toolbar__caption">{{getToday()}} {{getCurrentTime()}}, {{weather?.weather[0]?.description}}.</p>
+    </div>
+    <div class="toolbar__another-city">
+      <mat-form-field class="toolbar__input">
+        <mat-label>Другой город</mat-label>
+        <input type="text" [formControl]="cityControl" matInput (keypress)="onKeyPress($event)">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onButtonClick()"
+        [disabled]="cityControl.invalid">Обновить</button>
+    </div>
+
+  </div>
+  <div class="current__info">
+    <div class="current__left">
+      <div class="current__icon">
+        <img [src]="'http://openweathermap.org/img/wn/' + weather?.weather[0]?.icon + '@2x.png'" alt="">
+      </div>
+      <div class="current__temp">
+        {{weather?.main?.temp | number:'1.0-0'}} <span>&#8451;</span>
+      </div>
+    </div>
+    <div class="current__right">
+      <p>Ветер: {{weather?.wind?.speed}} м/с</p>
+      <p>Давление: {{weather?.main?.pressure / 1000 | number:'1.0-2'}} бар</p>
+      <p>Влажность: {{weather?.main?.humidity}}%</p>
+    </div>
+  </div>
+</div>

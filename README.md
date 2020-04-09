@@ -1,27 +1,73 @@
-# WeatherApp
+# Умный сервис прогноза погоды
+Задача со звездочкой: cервис призван помогать пользователю быстро определить погоду в своем населенном пункте и советовать, а что необходимо надеть сегодня на улицу, чтобы чувствовать себя комфортно.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+## О приложении
+### Технологии
+- [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+- TypeScript
+- RxJS
 
-## Development server
+### Интерфейс
+Веб-приложение, без оптимизации под мобильные устройства
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Формат ответа
+Прогноз погоды выводится в виде карточки, и содержит следующую информацию:
+- Название города
+- Текущий день недели и время
+- Описание погодных условий, например, "Ясно"
+- Иконку, отображающую текущие погодные условия
+- Текущую температуру
+- Характеристики погодных условий: ветер, давление и влажность
+- График отображающий изменение температуры в течение 19-21 часов и соответствующие иконки погодных условий
+- Советы, что надеть на улицу
 
-## Code scaffolding
+### Демонстрация работы
+Смотрите демонстрацию работы приложения на [YouTube](https://youtu.be/pfAJktV4UrM).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Процесс работы
+1. При запуске приложения, загружается прогноз погоды для города Москвы. Чтобы загрузить прогноз для другого города, надо ввести название города в текстовое поле "Другой город" и нажать кнопку "Обновить".
+2. Название города вместе с другими параметрами (appid, units и lang) добавляются в параметры двух GET HTTP-запроса к API OpenWeather: для получения текущей погоды и для получения прогноза погоды на 5 дней вперёд с интервалом в 3 часа.
+3. Когда сервер возвращает ответ с данными, обновляются компоненты Погода, Прогноз погоды и Советы.
 
-## Build
+## Разработка
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Secrets
+Создайте в корне проекта файл secrets.js:
+```bash
+export const Secrets = {
+  "OPEN_WEATHER_KEY": "key"
+}
+```
 
-## Running unit tests
+### Development сервер
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Запустите `ng serve` для старта сервера разработки. Откройте `http://localhost:4200/`. Приложение автоматически обновится, если вы измените любой исходной файл.
 
-## Running end-to-end tests
+### Генерация кода
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Запустите `ng generate component component-name`, чтобы сгенерировать новый компонент. Вы также можете использовать `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Further help
+### Build
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Запустите `ng build`, чтобы сбилдить проект. Артефакты билда сохранятся в папку `dist/`. Используйте флаг `--prod` для сборки продакшн билда.
+
+### Дополнительная информация
+
+Чтобы получить дополнительную информацию об Angular CLI используйте команду `ng help` или прочитайте [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Тесты
+### Запуск юнит тестов
+
+Используйте `ng test`, чтобы запустить юнит тесты с [Karma](https://karma-runner.github.io).
+
+## Запуск end-to-end тестов
+End-to-end тестами проект не покрыт.
+
+Используйте `ng e2e`, чтобы запустить end-to-end тесты с [Protractor](http://www.protractortest.org/).
+
+## CI/CD
+Для CI/CD используются Github Actions:
+- При создании пул реквестов в ветку мастер, запускается воркфлоу [ingrate.yml]().
+- При слияние в ветку мастер, запускается воркфлоу [deploy.yml]().
+
+Приложение развернуто на хостинге Firebase: https://smart-weather-forecast.firebaseapp.com/

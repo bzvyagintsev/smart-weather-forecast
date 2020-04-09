@@ -1,0 +1,6 @@
+<div *ngIf="advice?.length > 0" class="advice">
+  <div class="advice__icon">
+    <mat-icon aria-hidden="false" aria-label="advice icon">assistant</mat-icon>
+  </div>
+  <p class="advice__text">{{advice.join(' ')}}</p>
+</div>

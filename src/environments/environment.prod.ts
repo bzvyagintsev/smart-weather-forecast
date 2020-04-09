@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  openWeatherKey: process.env.OPEN_WEATHER_KEY,
 };
