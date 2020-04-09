@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { chartData } from '../models/chart-data';
+import { ChartData } from '../models/chart-data';
 
 @Component({
   selector: 'app-chart',
@@ -7,7 +7,7 @@ import { chartData } from '../models/chart-data';
   styleUrls: ['./chart.component.scss'],
 })
 export class ChartComponent {
-  @Input() data: chartData[];
+  @Input() data: ChartData[];
 
   view = [700, 310];
 

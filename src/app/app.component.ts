@@ -5,7 +5,7 @@ import { mergeMap } from 'rxjs/internal/operators/mergeMap';
 import { map } from 'rxjs/internal/operators/map';
 import { Weather } from './models/weather';
 import { Forecast } from './models/forecast';
-import { chartData } from './models/chart-data';
+import { ChartData } from './models/chart-data';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   public forecast: Forecast;
 
-  public data: chartData[] = [{ name: 'Температура', series: [] }];
+  public data: ChartData[] = [{ name: 'Температура', series: [] }];
 
   private params = { q: 'Moscow' };
 

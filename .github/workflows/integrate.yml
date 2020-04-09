@@ -6,7 +6,7 @@ on:
 
 jobs:
   lint_pr:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -14,6 +14,6 @@ jobs:
           node-version: 12
         #   Clean instal for Ci server
       - run: npm ci
-      - run: ng lint
-      - run: ng test
-      - run: ng build --prod
+      - run: npm run lint
+      - run: npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm run build --prod

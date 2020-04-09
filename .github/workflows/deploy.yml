@@ -14,9 +14,9 @@ jobs:
           node-version: 12
       #  Clean instal for Ci server
       - run: npm ci
-      - run: ng lint
-      - run: ng test
-      - run: ng build --prod
+      - run: npm run lint
+      - run: npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm run build --prod
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
