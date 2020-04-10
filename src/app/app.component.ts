@@ -13,6 +13,8 @@ import { ChartData } from './models/chart-data';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  public loaded = false;
+
   public weather: Weather;
 
   public forecast: Forecast;
@@ -48,6 +50,10 @@ export class AppComponent implements OnInit {
           );
         }),
         tap(({ weather, forecast }) => {
+          if (weather && forecast) {
+            this.loaded = true;
+          }
+
           this.forecast = forecast;
           this.forecast.list.unshift(weather);
 
