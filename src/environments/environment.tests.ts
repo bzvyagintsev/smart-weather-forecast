@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  openWeatherKey: '',
+  openWeatherKey: window['env']['openWeatherKey'] || '',
 };
