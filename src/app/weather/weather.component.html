@@ -1,7 +1,7 @@
-<div *ngIf="weather">
+<div class="weather" [class]="weather ? '' : 'weather--loading'">
   <div class="toolbar">
     <div class="toolbar__name">
-      <h1 class="toolbar__title">{{weather.name}}</h1>
+      <h1 class="toolbar__title">{{weather?.name}}</h1>
       <p class="toolbar__caption">{{getToday()}} {{getCurrentTime()}}, {{weather?.weather[0]?.description}}.</p>
     </div>
     <div class="toolbar__another-city">

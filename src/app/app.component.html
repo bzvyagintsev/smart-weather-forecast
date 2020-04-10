@@ -3,7 +3,7 @@
     <ng-container *ngIf="loaded">
       <app-weather [weather]="weather" (update)="onUpdate($event)"></app-weather>
 
-      <app-chart [data]="data"></app-chart>
+      <app-chart [forecast]="forecast"></app-chart>
 
       <app-advice [data]="forecast?.list?.slice(0,8)"></app-advice>
     </ng-container>

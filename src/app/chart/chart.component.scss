@@ -7,6 +7,10 @@
 
   &--loading {
     background: #fafafa;
+
+    .chart__graph {
+      display: none;
+    }
   }
 
   &__icons {

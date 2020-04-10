@@ -1,11 +1,11 @@
-<div *ngIf="data" class="chart" [class]="data[0]?.series?.length === 0 ? 'chart--loading' : ''">
+<div class="chart" [class]="chartData[0]?.series?.length === 0 ? 'chart--loading' : ''">
   <ngx-charts-area-chart [view]="view" [scheme]="colorScheme" [xAxis]="true" [yAxis]="true"
-    [xAxisLabel]="'Время'" [yAxisLabel]="'Температура'" [timeline]="true" [results]="data" [animations]="true"
-    [trimXAxisTicks]="true">
+    [xAxisLabel]="'Время'" [yAxisLabel]="'Температура'" [timeline]="true" [results]="chartData" [animations]="true"
+    [trimXAxisTicks]="true" class="chart__graph">
   </ngx-charts-area-chart>
 
   <div class="chart__icons">
-    <div *ngFor="let item of data[0]?.series">
+    <div *ngFor="let item of chartData[0]?.series">
       <img [src]="'http://openweathermap.org/img/wn/' + item.icon + '@2x.png'">
     </div>
   </div>

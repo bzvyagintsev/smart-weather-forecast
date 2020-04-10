@@ -1,3 +1,13 @@
+.weather {
+  min-height: 176px;
+
+  &--loading {
+    .toolbar__name, .current__info {
+      display: none;
+    }
+  }
+}
+
 .toolbar {
   display: flex;
   flex-flow: row nowrap;

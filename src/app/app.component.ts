@@ -19,8 +19,6 @@ export class AppComponent implements OnInit {
 
   public forecast: Forecast;
 
-  public data: ChartData[] = [{ name: 'Температура', series: [] }];
-
   private params = { q: 'Moscow' };
 
   constructor(private weatherService: WeatherService) {}
@@ -54,43 +52,18 @@ export class AppComponent implements OnInit {
             this.loaded = true;
           }
 
-          this.forecast = forecast;
-          this.forecast.list.unshift(weather);
+          const temp = {...forecast};
 
-          const date = new Date();
-          const dtTXT =
-            date.getFullYear() +
-            '-' +
-            (date.getMonth() + 1) +
-            '-' +
-            date.getUTCDate() +
-            ' ' +
-            (date.getHours() - 3) +
-            ':00:00';
+          temp.list.unshift(weather);
 
-          this.forecast.list[0].dt_txt = dtTXT;
+          let date = new Date();
+          date = new Date(date.setHours(date.getHours() - 3));
 
-          this.data[0].series = [];
+          temp.list[0].dt_txt = date.toUTCString();
 
-          this.updateChart(forecast);
+          this.forecast = temp;
         })
       )
       .subscribe();
-  }
-
-  private updateChart(arr): void {
-    for (const item of arr.list.slice(0, 8)) {
-      this.data[0].series.push({
-        name: this.getTime(item.dt_txt),
-        value: Math.round(item.main.temp),
-        icon: item.weather[0].icon,
-      });
-    }
-
-    this.data = [...this.data];
-  }
-
-  private getTime(value): string {
-    return new Date(value).getHours() + 3 + ':00';
   }
 }
