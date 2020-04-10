@@ -15,7 +15,7 @@ export interface WeatherData {
   snow: boolean;
   wind: boolean;
   rain: boolean;
-};
+}
 
 @Component({
   selector: 'app-advice',

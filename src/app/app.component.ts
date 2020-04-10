@@ -5,7 +5,6 @@ import { mergeMap } from 'rxjs/internal/operators/mergeMap';
 import { map } from 'rxjs/internal/operators/map';
 import { Weather } from './models/weather';
 import { Forecast } from './models/forecast';
-import { ChartData } from './models/chart-data';
 
 @Component({
   selector: 'app-root',
