@@ -26,20 +26,13 @@ describe('AdviceService', () => {
     expect(service.getAdvice('warm20')).toEqual(advices.warm20);
     expect(service.getAdvice('cold')).toEqual(advices.cold);
     expect(service.getAdvice('cold10')).toEqual(advices.cold10);
+    expect(service.getAdvice('warmCold')).toEqual(advices.warmCold);
     expect(service.getAdvice('warmer')).toEqual(advices.warmer);
     expect(service.getAdvice('cooling')).toEqual(advices.cooling);
   });
 
   it('should return null if wrong input', () => {
-    expect(service.getAdvice('adjhfjahdf')).toEqual(null);
-    expect(service.getAdvice('')).toEqual(null);
     expect(service.getAdvice(null)).toEqual(null);
     expect(service.getAdvice(undefined)).toEqual(null);
-    expect(service.getAdvice('true')).toEqual(null);
-    expect(service.getAdvice('false')).toEqual(null);
-    expect(service.getAdvice(' ')).toEqual(null);
-    expect(service.getAdvice('rains')).toEqual(null);
-    expect(service.getAdvice('rain, snow')).toEqual(null);
-    expect(service.getAdvice('rain snow')).toEqual(null);
   });
 });

@@ -5,7 +5,7 @@ import {
   SimpleChanges,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { AdviceService, advices } from '../services/advice.service';
+import { AdviceService, advicesType } from '../services/advice.service';
 import { Weather } from '../models/weather';
 
 export interface WeatherData {
@@ -38,7 +38,7 @@ export class AdviceComponent implements OnChanges {
     }
   }
 
-  private addAdvice(adviceType: string, comment?): void {
+  private addAdvice(adviceType: advicesType, comment?): void {
     const advice: string = this.adviceService.getAdvice(adviceType);
 
     if (advice && !this.advice.includes(advice)) {
@@ -77,11 +77,15 @@ export class AdviceComponent implements OnChanges {
   }
 
   private createAdvices(data: WeatherData): void {
-    if (data.min < 0) {
+    if (data.min < 0 && data.max > 0) {
+      this.addAdvice('warmCold');
+    }
+
+    if (data.min < 0 && data.max < 0) {
       this.addAdvice(data.min < -10 ? 'cold10' : 'cold');
     }
 
-    if (data.max > 0) {
+    if (data.max > 0 && data.min > 0) {
       if (data.max < 10) {
         this.addAdvice('warm');
       } else {
