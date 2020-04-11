@@ -42,6 +42,9 @@ export class ChartComponent implements OnChanges {
   }
 
   private getTime(value): string {
-    return new Date(value).getHours() + 3 + ':00';
+    const date = new Date(value);
+    date.setHours(date.getHours() + 3);
+
+    return date.getHours() + ':00';
   }
 }
