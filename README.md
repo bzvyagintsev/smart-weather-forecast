@@ -41,18 +41,6 @@ export const Secrets = {
 }
 ```
 
-### Development сервер
-
-Запустите `ng serve` для старта сервера разработки. Откройте `http://localhost:4200/`. Приложение автоматически обновится, если вы измените любой исходной файл.
-
-### Генерация кода
-
-Запустите `ng generate component component-name`, чтобы сгенерировать новый компонент. Вы также можете использовать `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-### Build
-
-Запустите `ng build`, чтобы сбилдить проект. Артефакты билда сохранятся в папку `dist/`. Используйте флаг `--prod` для сборки продакшн билда.
-
 ### Development Server
 Run `ng serve` to start the development server. Open [http://localhost:4200/](http://localhost:4200/). The app will automatically reload if you make any changes to the source files.
 
